@@ -134,7 +134,7 @@ export default {
         comment: '',
         codedBy: 'AY'
       }
-      // this.$fetch()
+      this.$fetch()
     },
     isImportantSection (section) {
       const list = ['财务报告', '重要事项', '经营情况']
