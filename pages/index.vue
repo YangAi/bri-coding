@@ -78,6 +78,16 @@
           <v-btn block @click="checkProgress">
             查看我的进度
           </v-btn>
+          <s-card class="tw-my-2">
+            <v-container>
+              <v-text-field
+                v-model="form.codedBy"
+                dense
+                hide-details
+                label="Coder"
+              />
+            </v-container>
+          </s-card>
         </v-col>
       </v-row>
     </v-container>
@@ -99,7 +109,7 @@ export default {
         subsidyAmounts: '',
         locationMentioned: '',
         comment: '',
-        codedBy: 'AY'
+        codedBy: 'SZ'
       }
     }
   },
@@ -142,7 +152,7 @@ export default {
         subsidyAmounts: '',
         locationMentioned: '',
         comment: '',
-        codedBy: 'AY'
+        codedBy: this.form.codedBy
       }
       this.$fetch()
     },
