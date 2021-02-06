@@ -3,7 +3,6 @@
     "name": "index",
     "path": "/",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_151b5ab9"
+    "chunkName": "pages/index"
   }
 ]
