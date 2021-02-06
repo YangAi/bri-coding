@@ -1,14 +1,20 @@
 <template>
   <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+    <v-container class="fillheight tw-bg-gray-800 p-12">
+      <s-card max-width="600" class="tw-m-auto">
+        <s-card-title v-if="error.statusCode === 404">
+          {{ pageNotFound }}
+        </s-card-title>
+        <s-card-title v-else>
+          {{ error.message ||otherError }}
+        </s-card-title>
+        <v-container>
+          <NuxtLink to="/">
+            Home page
+          </NuxtLink>
+        </v-container>
+      </s-card>
+    </v-container>
   </v-app>
 </template>
 

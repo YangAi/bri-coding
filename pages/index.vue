@@ -1,22 +1,20 @@
 <template>
-  <main class="tw-bg-indigo-500">
+  <main class="tw-bg-indigo-500 tw-min-h-screen">
     <v-container class="extended right">
       <v-row>
         <v-col :cols="9">
-          <v-container>
-            <s-card class="tw-my-2">
-              <v-container>
-                <p class="tw-text-sm tw-text-gray-600" v-html="record.mentionPrevious" />
-                <p :class="{'tw-text-red-500 tw-font-bold': isImportantSection(record.section)}">
-                  {{ record.section }}
-                </p>
-                <p v-html="highlight(record.mention)" />
-                <p class="tw-text-gray-600" v-html="record.mentionNext" />
-              </v-container>
-            </s-card>
-          </v-container>
+          <s-card class="tw-my-2">
+            <v-container>
+              <p class="tw-text-sm tw-text-gray-600" v-html="record.mentionPrevious" />
+              <p :class="{'tw-text-red-500 tw-font-bold': isImportantSection(record.section)}">
+                {{ record.section }}
+              </p>
+              <p v-html="record.mention" />
+              <p class="tw-text-gray-600" v-html="record.mentionNext" />
+            </v-container>
+          </s-card>
         </v-col>
-        <v-col :cols="3">
+        <v-col :cols="3" class="tw-fixed tw-top-0 tw-right-0">
           <s-card class="tw-my-2">
             <v-container class="extended right">
               <v-row dense>
@@ -48,7 +46,8 @@
                     <v-textarea
                       v-model="form.locationMentioned"
                       dense
-                      :row="1"
+                      clearable
+                      :rows="2"
                       label="参与地区"
                     />
                   </v-col>
@@ -76,6 +75,9 @@
               </a>
             </s-card-subtitle>
           </s-card>
+          <v-btn block @click="checkProgress">
+            查看我的进度
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -89,6 +91,7 @@ export default {
     return {
       loading: true,
       record: {
+        section: ''
       },
       form: {
         actualParticipated: 0,
@@ -101,21 +104,28 @@ export default {
     }
   },
   async fetch () {
-    this.record = await this.$api.bri.show('new', {
-      exclude: this.record?._id || ''
-    })
-    this.loading = false
+    try {
+      this.record = await this.$api.bri.show('new', {
+        exclude: this.record?._id || ''
+      })
+    } catch (e) {
+      console.log(e)
+    } finally {
+      this.loading = false
+    }
   },
-  mounted () {
-    this.record.mention = this.highlight(this.record.mention)
-    this.record.mentionPrevious = this.highlight(this.record.mentionPrevious)
-    this.record.mentionNext = this.highlight(this.record.mentionNext)
+  watch: {
+    'form.actualParticipated': {
+      handler (newVal) {
+        if (newVal === 1 && this.form.locationMentioned.length < 1) {
+          this.form.locationMentioned = this.record.locationMentioned || ''
+        } else {
+          this.form.locationMentioned = ''
+        }
+      }
+    }
   },
   methods: {
-    highlight (text) {
-      if (!text) { return '' }
-      return text.replaceAll('一带一路', '<em>一带一路</em>')
-    },
     async submit () {
       // const name = this.record.stockName
       this.loading = true
@@ -137,11 +147,20 @@ export default {
       this.$fetch()
     },
     isImportantSection (section) {
+      if (typeof section !== 'string') { return false }
       const list = ['财务报告', '重要事项', '经营情况']
       for (const item of list) {
         if (section.includes(item)) { return true }
       }
       return false
+    },
+    checkProgress () {
+      this.$api.bri.show(`coder/${this.form.codedBy}`).then((data) => {
+        this.$toast.success(`${this.form.codedBy} 已完成 ${data} 条`)
+      })
+      this.$api.bri.show('coder/empty').then((data) => {
+        this.$toast(`总共剩余 ${data} 条`)
+      })
     }
   }
 }
@@ -149,7 +168,10 @@ export default {
 
 <style lang="scss">
 em {
-  @apply tw-text-red-500;
+  @apply tw-text-red-500 tw-font-bold tw-px-1;
+  &.location {
+    @apply tw-text-indigo-500;
+  }
 }
 p {
   @apply tw-text-sm tw-font-serif;

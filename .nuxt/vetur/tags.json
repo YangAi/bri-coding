@@ -1,0 +1,74 @@
+{
+  "SCard": {
+    "description": "Auto imported from /components/atoms/SCard.vue"
+  },
+  "LazySCard": {
+    "description": "Auto imported from /components/atoms/SCard.vue"
+  },
+  "SCardSubtitle": {
+    "description": "Auto imported from /components/atoms/SCardSubtitle.vue"
+  },
+  "LazySCardSubtitle": {
+    "description": "Auto imported from /components/atoms/SCardSubtitle.vue"
+  },
+  "SCardTitle": {
+    "description": "Auto imported from /components/atoms/SCardTitle.vue"
+  },
+  "LazySCardTitle": {
+    "description": "Auto imported from /components/atoms/SCardTitle.vue"
+  },
+  "SChip": {
+    "description": "Auto imported from /components/atoms/SChip.vue"
+  },
+  "LazySChip": {
+    "description": "Auto imported from /components/atoms/SChip.vue"
+  },
+  "SMainPageBreadcrumb": {
+    "description": "Auto imported from /components/atoms/SMainPageBreadcrumb.vue"
+  },
+  "LazySMainPageBreadcrumb": {
+    "description": "Auto imported from /components/atoms/SMainPageBreadcrumb.vue"
+  },
+  "SMainPageTitle": {
+    "description": "Auto imported from /components/atoms/SMainPageTitle.vue"
+  },
+  "LazySMainPageTitle": {
+    "description": "Auto imported from /components/atoms/SMainPageTitle.vue"
+  },
+  "SPlatformLogo": {
+    "description": "Auto imported from /components/atoms/SPlatformLogo.vue"
+  },
+  "LazySPlatformLogo": {
+    "description": "Auto imported from /components/atoms/SPlatformLogo.vue"
+  },
+  "SSelectableGroup": {
+    "description": "Auto imported from /components/atoms/SSelectableGroup.vue"
+  },
+  "LazySSelectableGroup": {
+    "description": "Auto imported from /components/atoms/SSelectableGroup.vue"
+  },
+  "SSelectableItem": {
+    "description": "Auto imported from /components/atoms/SSelectableItem.vue"
+  },
+  "LazySSelectableItem": {
+    "description": "Auto imported from /components/atoms/SSelectableItem.vue"
+  },
+  "STableList": {
+    "description": "Auto imported from /components/atoms/STableList.vue"
+  },
+  "LazySTableList": {
+    "description": "Auto imported from /components/atoms/STableList.vue"
+  },
+  "STableListItem": {
+    "description": "Auto imported from /components/atoms/STableListItem.vue"
+  },
+  "LazySTableListItem": {
+    "description": "Auto imported from /components/atoms/STableListItem.vue"
+  },
+  "STabs": {
+    "description": "Auto imported from /components/atoms/STabs.vue"
+  },
+  "LazySTabs": {
+    "description": "Auto imported from /components/atoms/STabs.vue"
+  }
+}
