@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
+const { uniq } = require('lodash')
 const $db = require('../../lib/db')
 const { apiResponse } = require('../utils/response')
-const { uniq } = require('lodash')
 
 const router = Router()
 router.get('/bri', async (req, res, next) => {
@@ -18,13 +18,13 @@ router.get('/bri', async (req, res, next) => {
 router.get('/bri/new', async (req, res, next) => {
   try {
     const exclude = req.query.exclude || undefined
-    const output = await $db.bri.findOne({ codedBy: '', _id: { $ne: exclude } })
+    const output = await $db.bri.findOne({ codedBy: '', _id: { $ne: exclude } }).skip(1000)
     // output = output.toObject()
-    output.mentionPrevious = highlight(output.mentionPrevious)
+    output.mentionPrevious = highlightAll(output.mentionPrevious).text
     const mention = highlightAll(output.mention)
     output.mention = mention.text
     output.locationMentioned = mention.locationMentioned
-    output.mentionNext = highlight(output.mentionNext)
+    output.mentionNext = highlightAll(output.mentionNext).text
     res.send(apiResponse(output))
   } catch (e) {
     next(e)
@@ -72,10 +72,10 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
 
 module.exports = router
 
-function highlight (text) {
-  if (!text) { return '' }
-  return text.replaceAll('一带一路', '<em>一带一路</em>')
-}
+// function highlight (text) {
+//   if (!text) { return '' }
+//   return text.replaceAll('一带一路', '<em>一带一路</em>')
+// }
 
 function highlightAll (text) {
   if (!text) { return '' }
@@ -154,6 +154,7 @@ function highlightAll (text) {
     '多米尼克',
     '格林纳达',
     '巴巴多斯',
+    '中东欧',
     '尼日尔',
     '菲律宾',
     '俄罗斯',
@@ -214,6 +215,7 @@ function highlightAll (text) {
     '新西兰',
     '圭亚那',
     '苏里南',
+    '台湾',
     '常州',
     '英国',
     '西安',
