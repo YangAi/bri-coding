@@ -79,7 +79,7 @@ module.exports = router
 
 function highlightAll (text) {
   if (!text) { return '' }
-  text = text.replaceAll('一带一路', '<em>一带一路</em>')
+  text = text.replace(/一带一路/g, '<em>一带一路</em>')
   const locations = [
     '密克罗尼西亚联邦',
     '特立尼达和多巴哥',
