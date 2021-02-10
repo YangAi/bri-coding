@@ -165,12 +165,13 @@ export default {
       return false
     },
     checkProgress () {
-      this.$api.bri.show(`coder/${this.form.codedBy}`).then((data) => {
-        this.$toast.success(`${this.form.codedBy} 已完成 ${data} 条`)
-      })
-      this.$api.bri.show('coder/empty').then((data) => {
-        this.$toast(`总共剩余 ${data} 条`)
-      })
+      this.$toast.info('写完两百条页面会直接报错。加油！')
+      // this.$api.bri.show(`coder/${this.form.codedBy}`).then((data) => {
+      //   this.$toast.success(`${this.form.codedBy} 已完成 ${data} 条`)
+      // })
+      // this.$api.bri.show('coder/empty').then((data) => {
+      //   this.$toast(`总共剩余 ${data} 条`)
+      // })
     }
   }
 }
