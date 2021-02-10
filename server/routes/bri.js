@@ -18,7 +18,7 @@ router.get('/bri', async (req, res, next) => {
 router.get('/bri/new', async (req, res, next) => {
   try {
     const exclude = req.query.exclude || undefined
-    const output = await $db.bri.findOne({ codedBy: '', _id: { $ne: exclude } }).skip(1000)
+    const output = await $db.bri.findOne({ codedBy: '', _id: { $ne: exclude } })
     // output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
     const mention = highlightAll(output.mention)
@@ -30,6 +30,7 @@ router.get('/bri/new', async (req, res, next) => {
     next(e)
   }
 })
+
 router.get('/bri/:id', async (req, res, next) => {
   try {
     const output = await $db.bri.findOne({ _id: req.params.id })
@@ -64,6 +65,31 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
       }
     }
     const output = await $db.bri.count(query)
+    res.send(apiResponse(output))
+  } catch (e) {
+    next(e)
+  }
+})
+
+router.get('/bri/new/test/:coder', async (req, res, next) => {
+  try {
+    const output = await $db.briTest.findOne({ codedBy: '', 'coding.codedBy': { $ne: req.params.coder } })
+    console.log(output)
+    // output = output.toObject()
+    output.mentionPrevious = highlightAll(output.mentionPrevious).text
+    const mention = highlightAll(output.mention)
+    output.mention = mention.text
+    output.locationMentioned = mention.locationMentioned
+    output.mentionNext = highlightAll(output.mentionNext).text
+    res.send(apiResponse(output))
+  } catch (e) {
+    next(e)
+  }
+})
+
+router.put('/bri/test/:id', bodyParser.json(), async (req, res, next) => {
+  try {
+    const output = await $db.briTest.updateOne({ _id: req.params.id }, { $push: { coding: req.body } })
     res.send(apiResponse(output))
   } catch (e) {
     next(e)
