@@ -25,6 +25,7 @@ router.get('/bri/new', async (req, res, next) => {
     output.mention = mention.text
     output.locationMentioned = mention.locationMentioned
     output.mentionNext = highlightAll(output.mentionNext).text
+    console.log(output)
     res.send(apiResponse(output))
   } catch (e) {
     next(e)
@@ -71,30 +72,30 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
   }
 })
 
-router.get('/bri/new/test/:coder', async (req, res, next) => {
-  try {
-    const output = await $db.briTest.findOne({ codedBy: '', 'coding.codedBy': { $ne: req.params.coder } })
-    console.log(output)
-    // output = output.toObject()
-    output.mentionPrevious = highlightAll(output.mentionPrevious).text
-    const mention = highlightAll(output.mention)
-    output.mention = mention.text
-    output.locationMentioned = mention.locationMentioned
-    output.mentionNext = highlightAll(output.mentionNext).text
-    res.send(apiResponse(output))
-  } catch (e) {
-    next(e)
-  }
-})
-
-router.put('/bri/test/:id', bodyParser.json(), async (req, res, next) => {
-  try {
-    const output = await $db.briTest.updateOne({ _id: req.params.id }, { $push: { coding: req.body } })
-    res.send(apiResponse(output))
-  } catch (e) {
-    next(e)
-  }
-})
+// router.get('/bri/new/test/:coder', async (req, res, next) => {
+//   try {
+//     const output = await $db.briTest.findOne({ codedBy: '' })
+//     // output = output.toObject()
+//     output.mentionPrevious = highlightAll(output.mentionPrevious).text
+//     const mention = highlightAll(output.mention)
+//     output.mention = mention.text
+//     output.locationMentioned = mention.locationMentioned
+//     output.mentionNext = highlightAll(output.mentionNext).text
+//     res.send(apiResponse(output))
+//   } catch (e) {
+//     next(e)
+//   }
+// })
+//
+// router.put('/bri/test/:id', bodyParser.json(), async (req, res, next) => {
+//   try {
+//     const output = await $db.briTest.updateOne({ _id: req.params.id }, req.body)
+//     await $db.bri.findOne({ _id: req.params.id })
+//     res.send(apiResponse(output))
+//   } catch (e) {
+//     next(e)
+//   }
+// })
 
 module.exports = router
 

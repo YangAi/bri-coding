@@ -13,15 +13,6 @@
               <p class="tw-text-gray-600" v-html="record.mentionNext" />
             </v-container>
           </s-card>
-          <section class="tw-my-4">
-            <v-container class="tw-grid tw-grid-cols-3 tw-gap-4">
-              <s-card v-for="item of record.coding" :key="item.codedBy" @click.native="assignCoding(item)">
-                <s-table-list>
-                  <s-table-list-item v-for="(value, key) in item" :key="key" :value="value" :text="key" />
-                </s-table-list>
-              </s-card>
-            </v-container>
-          </section>
         </v-col>
         <v-col :cols="3" class="tw-fixed tw-top-0 tw-right-0">
           <s-card class="tw-my-2">
@@ -87,16 +78,16 @@
           <v-btn block @click="checkProgress">
             查看我的进度
           </v-btn>
-          <!--          <s-card class="tw-my-2">-->
-          <!--            <v-container>-->
-          <!--              <v-text-field-->
-          <!--                v-model="form.codedBy"-->
-          <!--                dense-->
-          <!--                hide-details-->
-          <!--                label="Coder"-->
-          <!--              />-->
-          <!--            </v-container>-->
-          <!--          </s-card>-->
+          <s-card class="tw-my-2">
+            <v-container>
+              <v-text-field
+                v-model="form.codedBy"
+                dense
+                hide-details
+                label="Coder"
+              />
+            </v-container>
+          </s-card>
         </v-col>
       </v-row>
     </v-container>
@@ -105,7 +96,6 @@
 
 <script>
 // import { POSITION } from 'vue-toastification'
-import { cloneDeep } from 'lodash'
 export default {
   data () {
     return {
@@ -125,7 +115,7 @@ export default {
   },
   async fetch () {
     try {
-      this.record = await this.$api.bri.show('new/test/' + this.$route.params.name, {
+      this.record = await this.$api.bri.show('new', {
         exclude: this.record?._id || ''
       })
     } catch (e) {
@@ -134,26 +124,23 @@ export default {
       this.loading = false
     }
   },
-  // watch: {
-  //   'form.actualParticipated': {
-  //     handler (newVal) {
-  //       if (newVal === 1 && this.form.locationMentioned.length < 1) {
-  //         this.form.locationMentioned = this.record.locationMentioned || ''
-  //       } else {
-  //         this.form.locationMentioned = ''
-  //       }
-  //     }
-  //   }
-  // },
+  watch: {
+    'form.actualParticipated': {
+      handler (newVal) {
+        if (newVal === 1 && this.form.locationMentioned.length < 1) {
+          this.form.locationMentioned = this.record.locationMentioned || ''
+        } else {
+          this.form.locationMentioned = ''
+        }
+      }
+    }
+  },
   methods: {
-    assignCoding (item) {
-      this.form = cloneDeep(item)
-    },
     async submit () {
       // const name = this.record.stockName
       this.loading = true
-      await this.$api.bri.update('test/' + this.record._id, {
-        // ...this.record,
+      await this.$api.bri.update(this.record._id, {
+        ...this.record,
         ...this.form,
         specificProjects: this.form.specificProjects || '0',
         subsidyAmounts: this.form.subsidyAmounts || '0'
@@ -178,13 +165,12 @@ export default {
       return false
     },
     checkProgress () {
-      this.$toast.info('写完两百条页面会直接报错。加油！')
-      // this.$api.bri.show(`coder/${this.form.codedBy}`).then((data) => {
-      //   this.$toast.success(`${this.form.codedBy} 已完成 ${data} 条`)
-      // })
-      // this.$api.bri.show('coder/empty').then((data) => {
-      //   this.$toast(`总共剩余 ${data} 条`)
-      // })
+      this.$api.bri.show(`coder/${this.form.codedBy}`).then((data) => {
+        this.$toast.success(`${this.form.codedBy} 已完成 ${data} 条`)
+      })
+      this.$api.bri.show('coder/empty').then((data) => {
+        this.$toast(`总共剩余 ${data} 条`)
+      })
     }
   }
 }

@@ -1,5 +1,12 @@
 [
   {
+    "name": "bri-name",
+    "path": "/bri/:name?",
+    "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/_name.vue",
+    "chunkName": "pages/bri/_name",
+    "_name": "_2161d15b"
+  },
+  {
     "name": "test-name",
     "path": "/test/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/test/_name.vue",
