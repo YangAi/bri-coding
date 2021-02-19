@@ -2988,12 +2988,12 @@ function prevent(e) {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/test/_name.vue?vue&type=template&id=40653b23&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/test/_name.vue?vue&type=template&id=b87e0c28&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('main',{staticClass:"tw-bg-indigo-500 tw-min-h-screen"},[_c('v-container',{attrs:{"fluid":""}},[_c('v-row',[_c('v-col',{attrs:{"cols":9}},[_c('s-card',{staticClass:"tw-my-2"},[_c('v-container',[_c('p',{staticClass:"tw-text-sm tw-text-gray-600",domProps:{"innerHTML":_vm._s(_vm.record.mentionPrevious)}}),_vm._v(" "),_c('p',{class:{'tw-text-red-500 tw-font-bold': _vm.isImportantSection(_vm.record.section)}},[_vm._v("\n              "+_vm._s(_vm.record.section)+"\n            ")]),_vm._v(" "),_c('p',{domProps:{"innerHTML":_vm._s(_vm.record.mention)}}),_vm._v(" "),_c('p',{staticClass:"tw-text-gray-600",domProps:{"innerHTML":_vm._s(_vm.record.mentionNext)}})])],1),_vm._v(" "),_c('section',{staticClass:"tw-my-4"},[_c('v-container',{staticClass:"tw-grid tw-grid-cols-3 tw-gap-4"},_vm._l((_vm.record.coding),function(item){return _c('s-card',{key:item.codedBy,nativeOn:{"click":function($event){return _vm.assignCoding(item)}}},[_c('s-table-list',_vm._l((item),function(value,key){return _c('s-table-list-item',{key:key,attrs:{"value":value,"text":key}})}),1)],1)}),1)],1)],1),_vm._v(" "),_c('v-col',{staticClass:"tw-fixed tw-top-0 tw-right-0",attrs:{"cols":3}},[_c('s-card',{staticClass:"tw-my-2"},[_c('v-container',{staticClass:"extended right"},[_c('v-row',{attrs:{"dense":""}},[_c('v-col',{attrs:{"cols":12}},[_c('v-checkbox',{attrs:{"dense":"","label":"实际参与","true-value":1,"false-value":0},model:{value:(_vm.form.actualParticipated),callback:function ($$v) {_vm.$set(_vm.form, "actualParticipated", $$v)},expression:"form.actualParticipated"}})],1),_vm._v(" "),(_vm.form.actualParticipated === 1)?[_c('v-col',{attrs:{"cols":12}},[_c('v-text-field',{attrs:{"dense":"","label":"具体项目"},model:{value:(_vm.form.specificProjects),callback:function ($$v) {_vm.$set(_vm.form, "specificProjects", $$v)},expression:"form.specificProjects"}})],1),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-text-field',{attrs:{"dense":"","label":"补助金额"},model:{value:(_vm.form.subsidyAmounts),callback:function ($$v) {_vm.$set(_vm.form, "subsidyAmounts", $$v)},expression:"form.subsidyAmounts"}})],1),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-textarea',{attrs:{"dense":"","clearable":"","rows":2,"label":"参与地区"},model:{value:(_vm.form.locationMentioned),callback:function ($$v) {_vm.$set(_vm.form, "locationMentioned", $$v)},expression:"form.locationMentioned"}})],1)]:_vm._e(),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-textarea',{attrs:{"dense":"","rows":1,"label":"备注"},model:{value:(_vm.form.comment),callback:function ($$v) {_vm.$set(_vm.form, "comment", $$v)},expression:"form.comment"}})],1)],2),_vm._v(" "),_c('v-btn',{attrs:{"block":"","color":"accent","loading":_vm.$fetchState.pending || _vm.loading},on:{"click":_vm.submit}},[_vm._v("\n              保存\n            ")])],1)],1),_vm._v(" "),_c('s-card',{staticClass:"tw-my-2"},[_c('s-card-title',[_vm._v(_vm._s(_vm.record.title))]),_vm._v(" "),_c('s-card-subtitle',[_vm._v(_vm._s(_vm.record.sourceYear)+" · "+_vm._s(_vm.record.industry)+" · "+_vm._s(_vm.record.actualControllerType))]),_vm._v(" "),_c('s-card-subtitle',[_c('a',{attrs:{"href":_vm.record.docLink || _vm.record.link,"target":"_blank"}},[_vm._v("\n              查看原文\n            ")])])],1),_vm._v(" "),_c('v-btn',{attrs:{"block":""},on:{"click":_vm.checkProgress}},[_vm._v("\n          查看我的进度\n        ")])],1)],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/test/_name.vue?vue&type=template&id=40653b23&
+// CONCATENATED MODULE: ./pages/test/_name.vue?vue&type=template&id=b87e0c28&
 
 // EXTERNAL MODULE: external "lodash"
 var external_lodash_ = __webpack_require__(13);
@@ -3109,6 +3109,7 @@ var external_lodash_ = __webpack_require__(13);
 /* harmony default export */ var _namevue_type_script_lang_js_ = ({
   data() {
     return {
+      timeout: undefined,
       loading: true,
       record: {
         section: ''
@@ -3197,6 +3198,13 @@ var external_lodash_ = __webpack_require__(13);
       // this.$api.bri.show('coder/empty').then((data) => {
       //   this.$toast(`总共剩余 ${data} 条`)
       // })
+    },
+
+    setTimeoutAlert() {
+      this.timeout = setTimeout(() => {
+        this.$router.push('/');
+        this.$toast('超时，请重新加载');
+      }, 297 * 1000);
     }
 
   }

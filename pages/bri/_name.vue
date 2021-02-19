@@ -22,6 +22,7 @@
                   <v-checkbox
                     v-model="form.actualParticipated"
                     dense
+                    hide-details
                     label="实际参与"
                     :true-value="1"
                     :false-value="0"
@@ -32,7 +33,8 @@
                     <v-textarea
                       v-model="form.specificProjects"
                       dense
-                      :rows="2"
+                      hide-details
+                      :rows="1"
                       label="具体项目"
                     />
                   </v-col>
@@ -47,6 +49,7 @@
                     <v-textarea
                       v-model="form.locationMentioned"
                       dense
+                      hide-details
                       clearable
                       :rows="2"
                       label="参与地区"
@@ -57,8 +60,16 @@
                   <v-textarea
                     v-model="form.comment"
                     dense
+                    hide-details
                     :rows="1"
                     label="备注"
+                  />
+                  <v-checkbox
+                    v-model="form.questionMark"
+                    dense
+                    label="不确定"
+                    :true-value="1"
+                    :false-value="0"
                   />
                 </v-col>
               </v-row>
@@ -100,6 +111,7 @@
 export default {
   data () {
     return {
+      timeout: undefined,
       loading: true,
       record: {
         section: ''
@@ -110,7 +122,8 @@ export default {
         subsidyAmounts: '',
         locationMentioned: '',
         comment: '',
-        codedBy: this.$route.params.name
+        codedBy: this.$route.params.name,
+        questionMark: 0
       }
     }
   },
@@ -134,6 +147,9 @@ export default {
           this.form.locationMentioned = ''
         }
       }
+    },
+    record () {
+      this.setTimeoutAlert()
     }
   },
   methods: {
@@ -172,6 +188,12 @@ export default {
       this.$api.bri.show('coder/empty').then((data) => {
         this.$toast(`总共剩余 ${data} 条`)
       })
+    },
+    setTimeoutAlert () {
+      this.timeout = setTimeout(() => {
+        this.$router.push('/')
+        this.$toast('超时，请重新加载')
+      }, 297 * 1000)
     }
   }
 }

@@ -109,6 +109,7 @@ import { cloneDeep } from 'lodash'
 export default {
   data () {
     return {
+      timeout: undefined,
       loading: true,
       record: {
         section: ''
@@ -185,6 +186,12 @@ export default {
       // this.$api.bri.show('coder/empty').then((data) => {
       //   this.$toast(`总共剩余 ${data} 条`)
       // })
+    },
+    setTimeoutAlert () {
+      this.timeout = setTimeout(() => {
+        this.$router.push('/')
+        this.$toast('超时，请重新加载')
+      }, 297 * 1000)
     }
   }
 }

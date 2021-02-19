@@ -19,7 +19,6 @@ router.get('/bri/new', async (req, res, next) => {
   try {
     const lock = Date.now() - 300 * 1000
     const output = await $db.bri.findOne({ $or: [{ codedBy: '', lock: undefined }, { codedBy: '', lock: { $lt: lock } }] })
-    console.log(output)
     await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
     // output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
@@ -63,7 +62,7 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
     } else {
       query = {
         codedBy: { $in: req.params.coder },
-        sourceYear: 2018
+        sourceYear: { $in: [2016, 2017] }
       }
     }
     const output = await $db.bri.count(query)
