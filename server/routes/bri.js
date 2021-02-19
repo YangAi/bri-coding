@@ -25,7 +25,6 @@ router.get('/bri/new', async (req, res, next) => {
     output.mention = mention.text
     output.locationMentioned = mention.locationMentioned
     output.mentionNext = highlightAll(output.mentionNext).text
-    console.log(output)
     res.send(apiResponse(output))
   } catch (e) {
     next(e)

@@ -29,9 +29,10 @@
                 </v-col>
                 <template v-if="form.actualParticipated === 1">
                   <v-col :cols="12">
-                    <v-text-field
+                    <v-textarea
                       v-model="form.specificProjects"
                       dense
+                      :rows="2"
                       label="具体项目"
                     />
                   </v-col>
