@@ -6930,12 +6930,12 @@ var css = __webpack_require__(71);
 // EXTERNAL MODULE: ./node_modules/vue-toastification/dist/index.css
 var dist = __webpack_require__(73);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=4ab08a5b&
-var defaultvue_type_template_id_4ab08a5b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-main',[_c('nuxt')],1)],1)}
-var defaultvue_type_template_id_4ab08a5b_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=773862c8&
+var defaultvue_type_template_id_773862c8_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-main',[_c('nuxt')],1)],1)}
+var defaultvue_type_template_id_773862c8_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=4ab08a5b&
+// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=773862c8&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=script&lang=js&
 //
@@ -6949,6 +6949,7 @@ var defaultvue_type_template_id_4ab08a5b_staticRenderFns = []
 /* harmony default export */ var defaultvue_type_script_lang_js_ = ({
   data() {
     return {
+      version: 'v1.0.0',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -6966,6 +6967,17 @@ var defaultvue_type_template_id_4ab08a5b_staticRenderFns = []
       rightDrawer: false,
       title: '一带一路'
     };
+  },
+
+  async fetch() {
+    const res = await this.$api.bri.show('version');
+
+    if (this.version !== res.value) {
+      this.$nuxt.error({
+        statusCode: 400,
+        message: res.value + '版本需要更新，麻烦Github重新Pull一下'
+      });
+    }
   }
 
 });
@@ -7060,8 +7072,8 @@ var VMain = __webpack_require__(75);
 
 var default_component = Object(componentNormalizer["a" /* default */])(
   layouts_defaultvue_type_script_lang_js_,
-  defaultvue_type_template_id_4ab08a5b_render,
-  defaultvue_type_template_id_4ab08a5b_staticRenderFns,
+  defaultvue_type_template_id_773862c8_render,
+  defaultvue_type_template_id_773862c8_staticRenderFns,
   false,
   null,
   null,

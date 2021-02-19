@@ -5,6 +5,17 @@ const $db = require('../../lib/db')
 const { apiResponse } = require('../utils/response')
 
 const router = Router()
+
+router.get('/bri/version', async (req, res, next) => {
+  try {
+    const output = await $db.parameter.findOne({ key: 'version' })
+    res.send(apiResponse(output))
+  } catch (e) {
+    next(e)
+  }
+})
+
+
 router.get('/bri', async (req, res, next) => {
   try {
     const pn = req.query.pn || 1

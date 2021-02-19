@@ -10,6 +10,7 @@
 export default {
   data () {
     return {
+      version: 'v1.0.0',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -29,6 +30,12 @@ export default {
       right: true,
       rightDrawer: false,
       title: '一带一路'
+    }
+  },
+  async fetch () {
+    const res = await this.$api.bri.show('version')
+    if (this.version !== res.value) {
+      this.$nuxt.error({ statusCode: 400, message: res.value + '版本需要更新，麻烦Github重新Pull一下' })
     }
   }
 }

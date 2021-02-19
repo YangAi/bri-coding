@@ -2,6 +2,11 @@
 
 (async () => {
   const $db = require('../lib/db')
+  await $db.parameter.insertMany([{
+    key: 'version',
+    value: 'v1.0.0'
+  }])
+  return
   const tests = await $db.briTest.find()
   for (const test of tests) {
     await $db.bri.findOneAndUpdate({
