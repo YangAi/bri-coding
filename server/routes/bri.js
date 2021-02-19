@@ -17,8 +17,10 @@ router.get('/bri', async (req, res, next) => {
 
 router.get('/bri/new', async (req, res, next) => {
   try {
-    const exclude = req.query.exclude || undefined
-    const output = await $db.bri.findOne({ codedBy: '', _id: { $ne: exclude } })
+    const lock = Date.now() - 300 * 1000
+    const output = await $db.bri.findOne({ $or: [{ codedBy: '', lock: undefined }, { codedBy: '', lock: { $lt: lock } }] })
+    console.log(output)
+    await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
     // output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
     const mention = highlightAll(output.mention)
