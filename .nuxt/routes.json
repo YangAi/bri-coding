@@ -3,18 +3,21 @@
     "name": "bri-name",
     "path": "/bri/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/_name.vue",
-    "chunkName": "pages/bri/_name"
+    "chunkName": "pages/bri/_name",
+    "_name": "_2161d15b"
   },
   {
     "name": "test-name",
     "path": "/test/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/test/_name.vue",
-    "chunkName": "pages/test/_name"
+    "chunkName": "pages/test/_name",
+    "_name": "_c6708654"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_151b5ab9"
   }
 ]

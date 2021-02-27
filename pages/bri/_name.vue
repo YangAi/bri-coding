@@ -147,12 +147,6 @@ export default {
           this.form.locationMentioned = ''
         }
       }
-    },
-    record: {
-      handler () {
-        this.setTimeoutAlert()
-      },
-      deep: true
     }
   },
   methods: {
