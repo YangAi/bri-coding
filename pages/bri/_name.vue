@@ -148,8 +148,11 @@ export default {
         }
       }
     },
-    record () {
-      this.setTimeoutAlert()
+    record: {
+      handler () {
+        this.setTimeoutAlert()
+      },
+      deep: true
     }
   },
   methods: {
@@ -172,6 +175,7 @@ export default {
         codedBy: this.form.codedBy
       }
       this.$fetch()
+      this.setTimeoutAlert()
     },
     isImportantSection (section) {
       if (typeof section !== 'string') { return false }
@@ -190,8 +194,9 @@ export default {
       })
     },
     setTimeoutAlert () {
+      clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
-        this.$router.push('/')
+        this.$router.go(0)
         this.$toast('超时，请重新加载')
       }, 297 * 1000)
     }
