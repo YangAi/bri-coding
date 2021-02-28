@@ -9,9 +9,6 @@
           {{ error.message ||otherError }}
         </s-card-title>
         <v-container>
-          <NuxtLink to="/">
-            Home page
-          </NuxtLink>
         </v-container>
       </s-card>
     </v-container>

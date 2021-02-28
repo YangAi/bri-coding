@@ -4,8 +4,8 @@ const colors = require('tailwindcss/colors')
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - super-house-finder',
-    title: 'super-house-finder',
+    titleTemplate: '%s - bri-coding',
+    title: 'bri-coding',
     htmlAttrs: {
       lang: 'en'
     },

@@ -34,7 +34,7 @@
                       v-model="form.specificProjects"
                       dense
                       hide-details
-                      :rows="1"
+                      :rows="2"
                       label="具体项目"
                     />
                   </v-col>
