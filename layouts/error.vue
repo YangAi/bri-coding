@@ -8,8 +8,6 @@
         <s-card-title v-else>
           {{ error.message ||otherError }}
         </s-card-title>
-        <v-container>
-        </v-container>
       </s-card>
     </v-container>
   </v-app>

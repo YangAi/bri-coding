@@ -4,7 +4,9 @@
       <s-card-title>名字缩写：</s-card-title>
       <v-container>
         <v-text-field v-model="name" />
-        <v-btn block large label="Name Abbr" :to="`/bri/${name}`">Start</v-btn>
+        <v-btn block large label="Name Abbr" :to="`/bri/${name}`">
+          Start
+        </v-btn>
       </v-container>
     </s-card>
   </v-container>
@@ -12,7 +14,7 @@
 
 <script>
 export default {
-  name: 'index',
+  name: 'Index',
   data () {
     return {
       name: ''

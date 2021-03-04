@@ -715,12 +715,12 @@ const dirtyTypes = ['color', 'file', 'time', 'date', 'datetime-local', 'week', '
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=37bedf42&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('s-card',{staticClass:"tw-w-64"},[_c('s-card-title',[_vm._v("名字缩写：")]),_vm._v(" "),_c('v-container',[_c('v-text-field',{model:{value:(_vm.name),callback:function ($$v) {_vm.name=$$v},expression:"name"}}),_vm._v(" "),_c('v-btn',{attrs:{"block":"","large":"","label":"Name Abbr","to":("/bri/" + _vm.name)}},[_vm._v("Start")])],1)],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=template&id=c20a81dc&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-container',[_c('s-card',{staticClass:"tw-w-64"},[_c('s-card-title',[_vm._v("名字缩写：")]),_vm._v(" "),_c('v-container',[_c('v-text-field',{model:{value:(_vm.name),callback:function ($$v) {_vm.name=$$v},expression:"name"}}),_vm._v(" "),_c('v-btn',{attrs:{"block":"","large":"","label":"Name Abbr","to":("/bri/" + _vm.name)}},[_vm._v("\n        Start\n      ")])],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=37bedf42&scoped=true&
+// CONCATENATED MODULE: ./pages/index.vue?vue&type=template&id=c20a81dc&scoped=true&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/index.vue?vue&type=script&lang=js&
 //
@@ -735,8 +735,10 @@ var staticRenderFns = []
 //
 //
 //
+//
+//
 /* harmony default export */ var lib_vue_loader_options_pagesvue_type_script_lang_js_ = ({
-  name: 'index',
+  name: 'Index',
 
   data() {
     return {
@@ -780,7 +782,7 @@ var component = Object(componentNormalizer["a" /* default */])(
   staticRenderFns,
   false,
   injectStyles,
-  "37bedf42",
+  "c20a81dc",
   "0dc7b568"
   
 )
