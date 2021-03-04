@@ -6927,12 +6927,12 @@ var css = __webpack_require__(71);
 // EXTERNAL MODULE: ./node_modules/vue-toastification/dist/index.css
 var dist = __webpack_require__(73);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=3dbf9d4c&
-var defaultvue_type_template_id_3dbf9d4c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-main',[_c('nuxt')],1)],1)}
-var defaultvue_type_template_id_3dbf9d4c_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=template&id=21033a8e&
+var defaultvue_type_template_id_21033a8e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-app',{attrs:{"dark":""}},[_c('v-main',[_c('nuxt')],1)],1)}
+var defaultvue_type_template_id_21033a8e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=3dbf9d4c&
+// CONCATENATED MODULE: ./layouts/default.vue?vue&type=template&id=21033a8e&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./layouts/default.vue?vue&type=script&lang=js&
 //
@@ -6946,7 +6946,7 @@ var defaultvue_type_template_id_3dbf9d4c_staticRenderFns = []
 /* harmony default export */ var defaultvue_type_script_lang_js_ = ({
   data() {
     return {
-      version: 'v1.0.2',
+      version: 'v1.0.3',
       clipped: false,
       drawer: false,
       fixed: false,
@@ -7069,8 +7069,8 @@ var VMain = __webpack_require__(75);
 
 var default_component = Object(componentNormalizer["a" /* default */])(
   layouts_defaultvue_type_script_lang_js_,
-  defaultvue_type_template_id_3dbf9d4c_render,
-  defaultvue_type_template_id_3dbf9d4c_staticRenderFns,
+  defaultvue_type_template_id_21033a8e_render,
+  defaultvue_type_template_id_21033a8e_staticRenderFns,
   false,
   null,
   null,

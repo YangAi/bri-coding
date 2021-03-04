@@ -117,6 +117,7 @@ module.exports = router
 
 function highlightAll (text) {
   if (!text) { return '' }
+  text = text.replace(/ /g, '')
   text = text.replace(/一带一路/g, '<em>一带一路</em>')
   const locations = [
     '密克罗尼西亚联邦',
