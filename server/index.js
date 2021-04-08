@@ -5,9 +5,11 @@ const app = express()
 
 // Require API routes
 const bri = require('./routes/bri')
+const briActionType = require('./routes/briActionType')
 
 // Import API Routes
 app.use(bri)
+app.use(briActionType)
 
 // Export express app
 module.exports = app

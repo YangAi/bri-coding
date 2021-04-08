@@ -5,7 +5,8 @@ export default (ctx, inject) => {
   // And in the Vue instances (this.$repository in your components)
   const repositoryWithAxios = createRepository(ctx.$axios)
   inject('api', {
-    bri: repositoryWithAxios('/bri')
+    bri: repositoryWithAxios('/bri'),
+    briActionType: repositoryWithAxios('/bri/action-type')
   })
   inject('_', _)
   // You can reuse the repositoryWithAxios object:

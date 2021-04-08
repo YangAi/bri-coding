@@ -4,7 +4,7 @@
       <s-card-title>名字缩写：</s-card-title>
       <v-container>
         <v-text-field v-model="name" />
-        <v-btn block large label="Name Abbr" :to="`/bri/${name}`">
+        <v-btn block large label="Name Abbr" :to="`/bri/action-type/${name}`">
           Start
         </v-btn>
       </v-container>

@@ -6,35 +6,21 @@ const { apiResponse } = require('../utils/response')
 
 const router = Router()
 
-router.get('/bri/version', async (req, res, next) => {
-  try {
-    const output = await $db.parameter.findOne({ key: 'version' })
-    res.send(apiResponse(output))
-  } catch (e) {
-    next(e)
-  }
-})
-
-router.get('/bri', async (req, res, next) => {
-  try {
-    const pn = req.query.pn || 1
-    const output = await $db.bri.find().limit(100).skip((pn - 1) * 100)
-    res.send(apiResponse(output))
-  } catch (e) {
-    next(e)
-  }
-})
-
-router.get('/bri/new', async (req, res, next) => {
+router.get('/bri/action-type/new', async (req, res, next) => {
   try {
     const lock = Date.now() - 300 * 1000
-    const output = await $db.bri.findOne({ $or: [{ codedBy: '', lock: undefined }, { codedBy: '', lock: { $lt: lock } }] })
-    await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
-    // output = output.toObject()
+    let output = await $db.bri.findOne({
+      $or: [
+        { actionType: undefined, typeCodedBy: undefined, actualParticipated: '1', lock: undefined },
+        { actionType: undefined, typeCodedBy: undefined, actualParticipated: '1', lock: { $lt: lock } }
+      ]
+    })
+    // await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
+    output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
     const mention = highlightAll(output.mention)
     output.mention = mention.text
-    output.locationMentioned = mention.locationMentioned
+    output.locationMentionedAuto = mention.locationMentioned
     output.mentionNext = highlightAll(output.mentionNext).text
     res.send(apiResponse(output))
   } catch (e) {
@@ -42,7 +28,7 @@ router.get('/bri/new', async (req, res, next) => {
   }
 })
 
-router.get('/bri/:id', async (req, res, next) => {
+router.get('/bri/action-type/:id', async (req, res, next) => {
   try {
     const output = await $db.bri.findOne({ _id: req.params.id })
     res.send(apiResponse(output))
@@ -51,7 +37,7 @@ router.get('/bri/:id', async (req, res, next) => {
   }
 })
 
-router.put('/bri/:id', bodyParser.json(), async (req, res, next) => {
+router.put('/bri/action-type/:id', bodyParser.json(), async (req, res, next) => {
   try {
     const output = await $db.bri.updateOne({ _id: req.params.id }, req.body)
     res.send(apiResponse(output))
@@ -60,19 +46,20 @@ router.put('/bri/:id', bodyParser.json(), async (req, res, next) => {
   }
 })
 
-router.get('/bri/coder/:coder', async (req, res, next) => {
+router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
   let query = {}
   try {
     if (req.params.coder === 'empty') {
       query = {
-        codedBy: {
+        actualParticipated: '1',
+        typeCodedBy: {
           $in: ['', undefined]
         }
       }
     } else {
       query = {
-        codedBy: { $in: req.params.coder },
-        sourceYear: { $in: [2016, 2017] }
+        actualParticipated: '1',
+        typeCodedBy: req.params.coder
       }
     }
     const output = await $db.bri.count(query)
@@ -82,37 +69,7 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
   }
 })
 
-// router.get('/bri/new/test/:coder', async (req, res, next) => {
-//   try {
-//     const output = await $db.briTest.findOne({ codedBy: '' })
-//     // output = output.toObject()
-//     output.mentionPrevious = highlightAll(output.mentionPrevious).text
-//     const mention = highlightAll(output.mention)
-//     output.mention = mention.text
-//     output.locationMentioned = mention.locationMentioned
-//     output.mentionNext = highlightAll(output.mentionNext).text
-//     res.send(apiResponse(output))
-//   } catch (e) {
-//     next(e)
-//   }
-// })
-//
-// router.put('/bri/test/:id', bodyParser.json(), async (req, res, next) => {
-//   try {
-//     const output = await $db.briTest.updateOne({ _id: req.params.id }, req.body)
-//     await $db.bri.findOne({ _id: req.params.id })
-//     res.send(apiResponse(output))
-//   } catch (e) {
-//     next(e)
-//   }
-// })
-
 module.exports = router
-
-// function highlight (text) {
-//   if (!text) { return '' }
-//   return text.replaceAll('一带一路', '<em>一带一路</em>')
-// }
 
 function highlightAll (text) {
   if (!text) { return '' }
@@ -264,6 +221,8 @@ function highlightAll (text) {
     '圭亚那',
     '苏里南',
     '以色列',
+    '港澳台',
+    '港澳',
     '台湾',
     '常州',
     '英国',

@@ -1,5 +1,12 @@
 [
   {
+    "name": "bri-action-type-name",
+    "path": "/bri/action-type/:name?",
+    "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/action-type/_name.vue",
+    "chunkName": "pages/bri/action-type/_name",
+    "_name": "_43be63bd"
+  },
+  {
     "name": "bri-name",
     "path": "/bri/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/_name.vue",

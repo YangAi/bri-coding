@@ -2,12 +2,14 @@
   "entry": "server.js",
   "files": {
     "pages/bri/_name.js": "pages/bri/_name.js",
+    "pages/bri/action-type/_name.js": "pages/bri/action-type/_name.js",
     "pages/index.js": "pages/index.js",
     "pages/test/_name.js": "pages/test/_name.js",
     "server.js": "server.js"
   },
   "maps": {
     "pages/bri/_name.js": "pages/bri/_name.js.map",
+    "pages/bri/action-type/_name.js": "pages/bri/action-type/_name.js.map",
     "pages/index.js": "pages/index.js.map",
     "pages/test/_name.js": "pages/test/_name.js.map",
     "server.js": "server.js.map"
