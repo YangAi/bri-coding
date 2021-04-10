@@ -58,8 +58,18 @@
               </p>
             </v-container>
             <v-container>
-              <v-btn block color="accent" :loading="$fetchState.pending || loading" @click="submit(false)">
+              <v-btn
+                v-if="!confirmS"
+                :loading="loading"
+                block
+                outlined
+                color="accent"
+                @click="confirmS = true"
+              >
                 保存
+              </v-btn>
+              <v-btn v-else block color="accent" :loading="$fetchState.pending || loading" @click="submit(false);confirmS = false">
+                确认提交
               </v-btn>
             </v-container>
           </s-card>
@@ -182,7 +192,7 @@ export default {
         '设计',
         '专业服务',
         '获奖',
-        '资质认证/专利',
+        '资质认证/专利/商标',
         '政府补贴',
         '物流',
         '金融支持',
@@ -202,6 +212,7 @@ export default {
         '其他'
       ],
       actionType: [],
+      confirmS: false,
       confirm: false,
       form: {
         actualParticipated: 0,
