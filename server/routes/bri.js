@@ -28,7 +28,7 @@ router.get('/bri', async (req, res, next) => {
 router.get('/bri/new', async (req, res, next) => {
   try {
     const lock = Date.now() - 300 * 1000
-    const output = await $db.bri.findOne({ $or: [{ codedBy: '', lock: undefined }, { codedBy: '', lock: { $lt: lock } }] })
+    const output = await $db.bri.findOne({ $or: [{ actualParticipated: '', lock: undefined }, { actualParticipated: '', lock: { $lt: lock } }] })
     await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
     // output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
