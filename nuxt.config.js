@@ -53,7 +53,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: '/api'
+    baseURL: 'https://bri-coding.herokuapp.com/api'
   },
 
   /*
