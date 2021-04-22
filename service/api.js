@@ -10,6 +10,8 @@ export default $axios => resource => ({
   },
 
   show (id, query) {
+    console.log('axios')
+
     return $axios.$get(`${resource}/${id}`, query)
   },
 
