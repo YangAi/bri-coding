@@ -7684,10 +7684,9 @@ var external_lodash_default = /*#__PURE__*/__webpack_require__.n(external_lodash
     return Promise.resolve(false);
   });
   $axios.onResponse(response => {
-    // if (!response.data.success) {
-    //   $toast.error(response.data.message)
-    // }
-    console.log(response); // console.log(isEmpty(response.data))
+    if (!response.data.success) {
+      $toast.error(response.data.message);
+    }
 
     return Object(external_lodash_["isEmpty"])(response.data) ? true : response.data;
   });
@@ -7705,7 +7704,6 @@ var external_lodash_default = /*#__PURE__*/__webpack_require__.n(external_lodash
   },
 
   show(id, query) {
-    console.log('axios');
     return $axios.$get(`${resource}/${id}`, query);
   },
 

@@ -14,7 +14,7 @@ router.get('/bri/action-type/new', async (req, res, next) => {
         { typeCodedBy: undefined, actualParticipated: 1, lock: undefined },
         { typeCodedBy: undefined, actualParticipated: 1, lock: { $lt: lock } }
       ]
-    })
+    }).skip(300)
     // await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
     output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
@@ -62,7 +62,8 @@ router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
         typeCodedBy: req.params.coder
       }
     }
-    const output = await $db.bri.count(query)
+    let output = await $db.bri.count(query)
+    if (req.params.coder === 'empty') { output -= 300 }
     res.send(apiResponse(output))
   } catch (e) {
     next(e)

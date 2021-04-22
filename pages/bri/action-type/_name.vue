@@ -229,11 +229,9 @@ export default {
   },
   async fetch () {
     try {
-      console.log('request start...')
       this.record = await this.$api.briActionType.show('new', {
         exclude: this.record?._id || ''
       })
-      console.log('request start')
       this.actionType = []
       this.form = {
         actualParticipated: this.record.actualParticipated,
