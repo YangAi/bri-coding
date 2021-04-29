@@ -10,7 +10,7 @@
 export default {
   data () {
     return {
-      version: 'v1.0.6',
+      version: 'v1.0.7',
       clipped: false,
       drawer: false,
       fixed: false,
