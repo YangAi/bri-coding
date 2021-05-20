@@ -166,7 +166,8 @@ export default {
         subsidyAmounts: '',
         locationMentioned: '',
         comment: '',
-        codedBy: this.form.codedBy
+        codedBy: this.form.codedBy,
+        questionMark: 0
       }
       this.$fetch()
       this.setTimeoutAlert()

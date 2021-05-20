@@ -1736,12 +1736,12 @@ module.exports = exports;
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/bri/_name.vue?vue&type=template&id=2ee937da&
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/bri/_name.vue?vue&type=template&id=93382b8c&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('main',{staticClass:"tw-bg-indigo-500 tw-min-h-screen"},[_c('v-container',{attrs:{"fluid":""}},[_c('v-row',[_c('v-col',{attrs:{"cols":9}},[_c('s-card',{staticClass:"tw-my-2"},[_c('v-container',[_c('p',{staticClass:"tw-text-sm tw-text-gray-600",domProps:{"innerHTML":_vm._s(_vm.record.mentionPrevious)}}),_vm._v(" "),_c('p',{class:{'tw-text-red-500 tw-font-bold': _vm.isImportantSection(_vm.record.section)}},[_vm._v("\n              "+_vm._s(_vm.record.section)+"\n            ")]),_vm._v(" "),_c('p',{domProps:{"innerHTML":_vm._s(_vm.record.mention)}}),_vm._v(" "),_c('p',{staticClass:"tw-text-gray-600",domProps:{"innerHTML":_vm._s(_vm.record.mentionNext)}})])],1)],1),_vm._v(" "),_c('v-col',{staticClass:"tw-fixed tw-top-0 tw-right-0",attrs:{"cols":3}},[_c('s-card',{staticClass:"tw-my-2"},[_c('v-container',{staticClass:"extended right"},[_c('v-row',{attrs:{"dense":""}},[_c('v-col',{attrs:{"cols":12}},[_c('v-checkbox',{attrs:{"dense":"","hide-details":"","label":"实际参与","true-value":1,"false-value":0},model:{value:(_vm.form.actualParticipated),callback:function ($$v) {_vm.$set(_vm.form, "actualParticipated", $$v)},expression:"form.actualParticipated"}})],1),_vm._v(" "),(_vm.form.actualParticipated === 1)?[_c('v-col',{attrs:{"cols":12}},[_c('v-textarea',{attrs:{"dense":"","hide-details":"","rows":2,"label":"具体项目"},model:{value:(_vm.form.specificProjects),callback:function ($$v) {_vm.$set(_vm.form, "specificProjects", $$v)},expression:"form.specificProjects"}})],1),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-text-field',{attrs:{"dense":"","label":"补助金额"},model:{value:(_vm.form.subsidyAmounts),callback:function ($$v) {_vm.$set(_vm.form, "subsidyAmounts", $$v)},expression:"form.subsidyAmounts"}})],1),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-textarea',{attrs:{"dense":"","hide-details":"","clearable":"","rows":2,"label":"参与地区"},model:{value:(_vm.form.locationMentioned),callback:function ($$v) {_vm.$set(_vm.form, "locationMentioned", $$v)},expression:"form.locationMentioned"}})],1)]:_vm._e(),_vm._v(" "),_c('v-col',{attrs:{"cols":12}},[_c('v-textarea',{attrs:{"dense":"","hide-details":"","rows":1,"label":"备注"},model:{value:(_vm.form.comment),callback:function ($$v) {_vm.$set(_vm.form, "comment", $$v)},expression:"form.comment"}}),_vm._v(" "),_c('v-checkbox',{attrs:{"dense":"","label":"不确定","true-value":1,"false-value":0},model:{value:(_vm.form.questionMark),callback:function ($$v) {_vm.$set(_vm.form, "questionMark", $$v)},expression:"form.questionMark"}})],1)],2),_vm._v(" "),_c('v-btn',{attrs:{"block":"","color":"accent","loading":_vm.$fetchState.pending || _vm.loading},on:{"click":_vm.submit}},[_vm._v("\n              保存\n            ")])],1)],1),_vm._v(" "),_c('s-card',{staticClass:"tw-my-2"},[_c('s-card-title',[_vm._v(_vm._s(_vm.record.title))]),_vm._v(" "),_c('s-card-subtitle',[_vm._v(_vm._s(_vm.record.sourceYear)+" · "+_vm._s(_vm.record.industry)+" · "+_vm._s(_vm.record.actualControllerType))]),_vm._v(" "),_c('s-card-subtitle',[_c('a',{attrs:{"href":_vm.record.docLink || _vm.record.link,"target":"_blank"}},[_vm._v("\n              查看原文\n            ")])])],1),_vm._v(" "),_c('v-btn',{attrs:{"block":""},on:{"click":_vm.checkProgress}},[_vm._v("\n          查看我的进度\n        ")]),_vm._v(" "),_c('s-card',{staticClass:"tw-my-2"},[_c('v-container',[_c('v-text-field',{attrs:{"dense":"","hide-details":"","label":"Coder"},model:{value:(_vm.form.codedBy),callback:function ($$v) {_vm.$set(_vm.form, "codedBy", $$v)},expression:"form.codedBy"}})],1)],1)],1)],1)],1)],1)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./pages/bri/_name.vue?vue&type=template&id=2ee937da&
+// CONCATENATED MODULE: ./pages/bri/_name.vue?vue&type=template&id=93382b8c&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib??ref--2-0!./node_modules/@nuxt/components/dist/loader.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./pages/bri/_name.vue?vue&type=script&lang=js&
 //
@@ -1915,7 +1915,8 @@ var staticRenderFns = []
         subsidyAmounts: '',
         locationMentioned: '',
         comment: '',
-        codedBy: this.form.codedBy
+        codedBy: this.form.codedBy,
+        questionMark: 0
       };
       this.$fetch();
       this.setTimeoutAlert();
