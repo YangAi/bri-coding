@@ -64,9 +64,8 @@ router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
         typeCodedBy: req.params.coder
       }
     }
-    let output = await $db.bri.count(query)
-    if (req.params.coder === 'empty') { output -= 200 }
-    res.send(apiResponse(output || 0))
+    const output = await $db.bri.count(query)
+    res.send(apiResponse(output))
   } catch (e) {
     next(e)
   }

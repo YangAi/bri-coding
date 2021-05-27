@@ -3,28 +3,24 @@
     "name": "bri-action-type-name",
     "path": "/bri/action-type/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/action-type/_name.vue",
-    "chunkName": "pages/bri/action-type/_name",
-    "_name": "_43be63bd"
+    "chunkName": "pages/bri/action-type/_name"
   },
   {
     "name": "bri-name",
     "path": "/bri/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/bri/_name.vue",
-    "chunkName": "pages/bri/_name",
-    "_name": "_2161d15b"
+    "chunkName": "pages/bri/_name"
   },
   {
     "name": "test-name",
     "path": "/test/:name?",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/test/_name.vue",
-    "chunkName": "pages/test/_name",
-    "_name": "_c6708654"
+    "chunkName": "pages/test/_name"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/yangai/coding/stock/new-company-ui/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_151b5ab9"
+    "chunkName": "pages/index"
   }
 ]
