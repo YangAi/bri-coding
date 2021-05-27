@@ -14,7 +14,7 @@ router.get('/bri/action-type/new', async (req, res, next) => {
         { title: { $not: /摘要/ }, typeCodedBy: undefined, actualParticipated: 1, lock: undefined },
         { title: { $not: /摘要/ }, typeCodedBy: undefined, actualParticipated: 1, lock: { $lt: lock } }
       ]
-    }).skip(700)
+    }).skip(400)
     await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
     output = output.toObject()
     output.mentionPrevious = highlightAll(output.mentionPrevious).text
@@ -65,7 +65,7 @@ router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
       }
     }
     let output = await $db.bri.count(query)
-    if (req.params.coder === 'empty') { output -= 700 }
+    if (req.params.coder === 'empty') { output -= 400 }
     res.send(apiResponse(output || 0))
   } catch (e) {
     next(e)
