@@ -11,8 +11,8 @@ router.get('/bri/action-type/new', async (req, res, next) => {
     const lock = Date.now() - 300 * 1000
     let output = await $db.bri.findOne({
       $or: [
-        { title: { $not: /摘要/ }, typeCodedBy: undefined, actualParticipated: 1, lock: undefined },
-        { title: { $not: /摘要/ }, typeCodedBy: undefined, actualParticipated: 1, lock: { $lt: lock } }
+        { actualParticipated: 1, lock: undefined },
+        { lock: { $lt: lock } }
       ]
     })
     await $db.bri.updateOne({ _id: output._id }, { lock: Date.now() })
@@ -52,16 +52,13 @@ router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
     if (req.params.coder === 'empty') {
       query = {
         title: { $not: /摘要/ },
-        actualParticipated: '1',
-        typeCodedBy: {
-          $in: ['', undefined]
-        }
+        actionType: { $regex: '其他', $not: /其他投资/ }
       }
     } else {
       query = {
         // title: { $not: /摘要/ },
         actualParticipated: '1',
-        typeCodedBy: req.params.coder
+        codedBy: req.params.coder
       }
     }
     const output = await $db.bri.count(query)

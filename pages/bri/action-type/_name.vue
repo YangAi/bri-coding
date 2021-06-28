@@ -78,23 +78,28 @@
           <s-card class="tw-my-2">
             <v-container class="extended right">
               <v-row dense>
-                <template v-if="form.actualParticipated === 1">
-                  <v-col :cols="12">
-                    <v-textarea
-                      v-model="form.specificProjects"
-                      hide-details
-                      :rows="2"
-                      label="具体项目"
-                    />
-                  </v-col>
-                  <v-col :cols="12">
-                    <v-text-field
-                      v-model="form.subsidyAmounts"
-                      hide-details
-                      label="补助金额"
-                    />
-                  </v-col>
-                </template>
+                <v-col :cols="12">
+                  <v-checkbox
+                    v-model="form.actualParticipated"
+                    dense
+                    label="实际参与"
+                    :true-value="1"
+                    :false-value="0"
+                  />
+                  <v-textarea
+                    v-model="form.specificProjects"
+                    hide-details
+                    :rows="2"
+                    label="具体项目"
+                  />
+                </v-col>
+                <v-col :cols="12">
+                  <v-text-field
+                    v-model="form.subsidyAmounts"
+                    hide-details
+                    label="补助金额"
+                  />
+                </v-col>
                 <v-col :cols="12">
                   <p class="caption">
                     * 选择后会清空上方的所有数据
@@ -175,6 +180,7 @@ export default {
         section: ''
       },
       actionsList: [
+        '营销/推广',
         '承包/参与项目',
         '海外分公司/办事处',
         '海外工厂/生产基地',
@@ -198,9 +204,11 @@ export default {
         '金融支持',
         '工业园区',
         '海外融资',
-        '营销/推广',
         '参与协会/机构',
-        '人才引进'
+        '人才引进',
+        '国内分支机构',
+        '特别分类',
+        '地产'
       ],
       typesList: [
         '基础设施',
@@ -233,7 +241,7 @@ export default {
       this.record = await this.$api.briActionType.show('new', {
         exclude: this.record?._id || ''
       })
-      this.actionType = []
+      this.actionType = this.record.actionType.split('、').filter(item => item !== '其他')
       this.form = {
         actualParticipated: this.record.actualParticipated,
         specificProjects: this.record.specificProjects,
@@ -241,7 +249,8 @@ export default {
         locationMentioned: this.record.locationMentionedAuto,
         comment: this.record.comment,
         typeCodedBy: this.$route.params.name,
-        questionMark: this.record.questionMark || 0
+        // questionMark: this.record.questionMark || 0
+        questionMark: 0
       }
     } catch (e) {
       console.log(e)
@@ -254,13 +263,16 @@ export default {
       // const name = this.record.stockName
       this.loading = true
       if (empty === true) {
+        this.actionType = []
         this.form = {
           actualParticipated: 0,
           specificProjects: '',
           subsidyAmounts: '',
           locationMentioned: '',
           comment: '',
-          codedBy: this.form.codedBy
+          codedBy: this.form.codedBy,
+          typeCodedBy: this.form.codedBy,
+          questionMark: 0
         }
       }
       console.log(this.form)

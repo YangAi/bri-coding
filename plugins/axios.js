@@ -9,7 +9,7 @@ export default function ({ $axios, $toast, error: nuxtError }) {
     return Promise.resolve(false)
   })
   $axios.onResponse((response) => {
-    if (!response.data.success) {
+    if (!response.data || !response.data.success) {
       $toast.error(response.data.message)
     }
     return isEmpty(response.data) ? true : response.data
