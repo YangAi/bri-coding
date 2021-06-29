@@ -241,7 +241,7 @@ export default {
       this.record = await this.$api.briActionType.show('new', {
         exclude: this.record?._id || ''
       })
-      this.actionType = this.record.actionType.split('、').filter(item => item !== '其他')
+      this.actionType = this.actionType ? [] : this.record.actionType.split('、').filter(item => item !== '其他')
       this.form = {
         actualParticipated: this.record.actualParticipated,
         specificProjects: this.record.specificProjects,
@@ -282,7 +282,7 @@ export default {
         ...this.form,
         specificProjects: this.form.specificProjects || '0',
         subsidyAmounts: this.form.subsidyAmounts || '0',
-        actionType: this.actionType.join('、')
+        actionType: this.actionType.filter(item => item.length > 0).join('、')
       })
       // this.$toast.success(`${name} 更新完成`, { position: POSITION.BOTTOM_RIGHT })
       this.form = {
