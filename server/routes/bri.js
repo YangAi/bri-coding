@@ -73,9 +73,7 @@ router.get('/bri/coder/:coder', async (req, res, next) => {
   try {
     if (req.params.coder === 'empty') {
       query = {
-        codedBy: {
-          $in: ['', undefined]
-        }
+        actualParticipated: ''
       }
     } else {
       query = {
