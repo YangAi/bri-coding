@@ -2,7 +2,7 @@
   <main class="tw-bg-indigo-500 tw-min-h-screen">
     <v-container fluid>
       <v-row>
-        <v-col :cols="9">
+        <v-col :cols="12" :md="9">
           <s-card class="tw-my-2">
             <v-container>
               <p class="tw-text-sm tw-text-gray-600" v-html="record.mentionPrevious" />
@@ -74,7 +74,7 @@
             </v-container>
           </s-card>
         </v-col>
-        <v-col :cols="3" class="tw-fixed tw-top-0 tw-right-0">
+        <v-col :cols="12" :md="3">
           <s-card class="tw-my-2">
             <v-container class="extended right">
               <v-row dense>
@@ -166,6 +166,26 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-btn
+      :loading="$fetchState.pending || loading"
+      block
+      dark
+      color="blue"
+      class="tw-fixed  tw-bottom-2 tw-left-2"
+      @click="submit(false);"
+    >
+      <v-icon>mdi-check</v-icon>
+    </v-btn>
+    <v-btn
+      :loading="loading"
+      block
+      dark
+      color="red"
+      class="tw-fixed  tw-bottom-2 tw-right-2"
+      @click="submit(true);"
+    >
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
   </main>
 </template>
 
