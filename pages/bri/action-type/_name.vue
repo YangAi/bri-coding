@@ -280,6 +280,7 @@ export default {
       await this.$api.briActionType.update(this.record._id, {
         ...this.record,
         ...this.form,
+        actualParticipated: 1,
         specificProjects: this.form.specificProjects || '0',
         subsidyAmounts: this.form.subsidyAmounts || '0',
         actionType: this.actionType.filter(item => item.length > 0).join('、')
