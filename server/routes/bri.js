@@ -30,14 +30,10 @@ router.get('/bri/new', async (req, res, next) => {
     const lock = Date.now() - 300 * 1000
     const output = await $db.bri.findOne({
       $or: [{
-        codedBy: {
-          $in: ['', undefined]
-        },
+        actualParticipated: '',
         lock: undefined
       }, {
-        codedBy: {
-          $in: ['', undefined]
-        },
+        actualParticipated: '',
         lock: { $lt: lock }
       }]
     })
