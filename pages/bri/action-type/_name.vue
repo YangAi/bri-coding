@@ -4,6 +4,15 @@
       <v-row>
         <v-col :cols="12" :md="9">
           <s-card class="tw-my-2">
+            <s-card-title>{{ record.title }}</s-card-title>
+            <s-card-subtitle>{{ record.sourceYear }} · {{ record.industry }} · {{ record.actualControllerType }}</s-card-subtitle>
+            <s-card-subtitle>
+              <a :href="record.docLink || record.link" target="_blank">
+                查看原文
+              </a>
+            </s-card-subtitle>
+          </s-card>
+          <s-card class="tw-my-2">
             <v-container>
               <p class="tw-text-sm tw-text-gray-600" v-html="record.mentionPrevious" />
               <p :class="{'tw-text-red-500 tw-font-bold': isImportantSection(record.section)}">
@@ -169,6 +178,7 @@
     <v-btn
       :loading="$fetchState.pending || loading"
       block
+      fab
       dark
       color="blue"
       class="tw-fixed  tw-bottom-2 tw-left-2"
@@ -179,6 +189,7 @@
     <v-btn
       :loading="loading"
       block
+      fab
       dark
       color="red"
       class="tw-fixed  tw-bottom-2 tw-right-2"
@@ -314,6 +325,7 @@ export default {
         comment: '',
         typeCodedBy: this.$route.params.name
       }
+      window.scrollTo(0, 0)
       this.$fetch()
       this.setTimeoutAlert()
     },
