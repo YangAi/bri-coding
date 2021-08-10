@@ -180,7 +180,7 @@
       fab
       dark
       color="blue"
-      class="tw-fixed  tw-bottom-2 tw-left-2"
+      class="tw-fixed  tw-bottom-12 tw-left-2"
       @click="submit(false);"
     >
       <v-icon>mdi-check</v-icon>
@@ -190,7 +190,7 @@
       fab
       dark
       color="red"
-      class="tw-fixed  tw-bottom-2 tw-right-2"
+      class="tw-fixed  tw-bottom-12 tw-right-2"
       @click="submit(true);"
     >
       <v-icon>mdi-close</v-icon>
