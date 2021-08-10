@@ -51,12 +51,13 @@ router.get('/bri/action-type/coder/:coder', async (req, res, next) => {
   try {
     if (req.params.coder === 'empty') {
       query = {
-        actualParticipated: ''
+        actualParticipated: 1, actionType: ''
       }
     } else {
       query = {
         // title: { $not: /摘要/ },
-        actualParticipated: '1',
+        actualParticipated: 1,
+        actionType: '',
         codedBy: req.params.coder
       }
     }
