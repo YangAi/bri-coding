@@ -175,27 +175,26 @@
         </v-col>
       </v-row>
     </v-container>
-    <div class="tw-fixed tw-bottom-2 tw-left-2 tw-right-2 tw-flex">
-      <v-btn
-        :loading="$fetchState.pending || loading"
-        fab
-        dark
-        color="blue"
-        @click="submit(false);"
-      >
-        <v-icon>mdi-check</v-icon>
-      </v-btn>
-      <v-spacer />
-      <v-btn
-        :loading="loading"
-        fab
-        dark
-        color="red"
-        @click="submit(true);"
-      >
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-    </div>
+    <v-btn
+      :loading="$fetchState.pending || loading"
+      fab
+      dark
+      color="blue"
+      class="tw-fixed  tw-bottom-2 tw-left-2"
+      @click="submit(false);"
+    >
+      <v-icon>mdi-check</v-icon>
+    </v-btn>
+    <v-btn
+      :loading="loading"
+      fab
+      dark
+      color="red"
+      class="tw-fixed  tw-bottom-2 tw-right-2"
+      @click="submit(true);"
+    >
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
   </main>
 </template>
 
