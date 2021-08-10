@@ -11,5 +11,5 @@ else
 
 fi
 
-git push heroku master
+git push heroku main
 
