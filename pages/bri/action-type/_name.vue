@@ -178,7 +178,6 @@
     <div class="tw-fixed tw-bottom-2 tw-left-2 tw-right-2 tw-flex">
       <v-btn
         :loading="$fetchState.pending || loading"
-        block
         fab
         dark
         color="blue"
@@ -189,7 +188,6 @@
       <v-spacer />
       <v-btn
         :loading="loading"
-        block
         fab
         dark
         color="red"
